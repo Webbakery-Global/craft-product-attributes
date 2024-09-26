@@ -1,21 +1,8 @@
 {
   "name": "the-web-bakery/product-attribute-fields",
-  "type": "craft-plugin",
+  "description": "Creating entry type fields by a product and the values of a entry by the variant",
   "version": "1.0.0",
-  "license": "MIT",
-  "support": {
-    "email": "support@thewebbakery.nl"
-  },
-  "authors": [
-    {
-      "name": "Casper van Schooten",
-      "homepage": "https://thewebbakery.nl/"
-    }
-  ],
-  "require": {
-    "php": ">=8.2",
-    "craftcms/cms": "^5.4.0"
-  },
+  "type": "craft-plugin",
   "require-dev": {
     "craftcms/ecs": "dev-main",
     "craftcms/phpstan": "dev-main"
@@ -25,11 +12,27 @@
       "thewebbakery\\productattributefields\\": "src/"
     }
   },
+  "license": "MIT",
+  "support": {
+    "docs": "https://github.com/Webbakery-Global/craft-product-attributes/blob/main/README.md",
+    "issues": "https://github.com/Webbakery-Global/craft-product-attributes/issues",
+    "source": "https://github.com/Webbakery-Global/craft-product-attributes"
+  },
+  "authors": [
+    {
+      "name": "Casper van Schooten",
+      "homepage": "https://github.com/Webbakery-Global/craft-product-attributes"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.4.0"
+  },
   "extra": {
     "handle": "product-attributes-fields",
     "name": "Product Attribute Fields",
     "developer": "The Web Bakery",
-    "documentationUrl": "https://bitbucket.org/thewebbakery/craft-product-attributes/src/main/",
+    "documentationUrl": "https://github.com/Webbakery-Global/craft-product-attributes/blob/main/README.md",
     "class": "thewebbakery\\productattributefields\\ProductAttributesField"
   },
   "scripts": {
