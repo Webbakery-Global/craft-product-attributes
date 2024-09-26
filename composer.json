@@ -13,17 +13,17 @@
     }
   },
   "license": "MIT",
-  "support": {
-    "docs": "https://github.com/Webbakery-Global/craft-product-attributes/blob/main/README.md",
-    "issues": "https://github.com/Webbakery-Global/craft-product-attributes/issues",
-    "source": "https://github.com/Webbakery-Global/craft-product-attributes"
-  },
   "authors": [
     {
       "name": "Casper van Schooten",
       "homepage": "https://github.com/Webbakery-Global/craft-product-attributes"
     }
   ],
+  "support": {
+    "docs": "https://github.com/Webbakery-Global/craft-product-attributes/blob/main/README.md",
+    "issues": "https://github.com/Webbakery-Global/craft-product-attributes/issues",
+    "source": "https://github.com/Webbakery-Global/craft-product-attributes"
+  },
   "require": {
     "php": ">=8.2",
     "craftcms/cms": "^5.4.0"
@@ -40,6 +40,14 @@
     "fix-cs": "ecs check --ansi --fix",
     "phpstan": "phpstan --memory-limit=1G"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "path",
+      "url": "https://github.com/Webbakery-Global/craft-product-attributes"
+    }
+  ],
   "config": {
     "sort-packages": true,
     "platform": {
