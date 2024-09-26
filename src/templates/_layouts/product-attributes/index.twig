@@ -1,0 +1,38 @@
+{% extends 'product-attribute-fields/_layouts' %}
+{% import '_includes/forms' as forms %}
+
+{% set options = [
+  { label: 'Afwerking', value: 'afwerking' },
+  { label: 'AIRTEC® Logo', value: 'airtec_logo' },
+  { label: 'Diffuser', value: 'diffuser' },
+  { label: 'Kleding maat', value: 'kleding-maat' },
+  { label: 'Kleur remslang', value: 'kleur-remslang' },
+  { label: 'Kleur silicone slang(en)', value: 'kleur-silicone-slangen' },
+  { label: 'Indicatieve levertijd', value: 'levertijd' },
+  { label: 'Afwerking (MD)', value: 'md_afwerking' },
+  { label: 'Afwerking (MD structuur)', value: 'md_structuur' },
+  { label: 'Type systeem', value: 'msSystem' },
+  { label: 'Sierstuk', value: 'ms_tips' },
+  { label: 'PRO® Logo', value: 'pro_logo' },
+  { label: 'Kleur silicone slang(en)', value: 'pro_silicone' },
+  { label: 'Sierstuk', value: 'sierstuk' },
+  { label: 'Compatibel met trekhaak?', value: 'trekhaak' },
+  { label: 'Type luchtfilter', value: 'type_luchtfilter' },
+  { label: 'Afwerking grill', value: 'zun_grill' },
+
+] %}
+
+{% block main %}
+  <div>
+    {{ forms.selectField({
+      name: name,
+      class: '',
+      options: options,
+      value: value ?: '',
+      multiple: true,
+    }) }}
+  </div>
+{% endblock %}
+
+{% js %}
+{% endjs %}

@@ -1,0 +1,28 @@
+{% extends 'product-attribute-fields/_layouts' %}
+{% import '_includes/forms' as forms %}
+{% set attributes = product.productAttributes.all() ?: [] %}
+
+{% block main %}
+  <div>
+    {% for dropdown in dropdowns %}
+
+      {% set options = [] %}
+      {% for entry in dropdown.entries %}
+        {% set options = options | merge([{ label: entry.title, value: entry.id }]) %}
+      {% endfor %}
+
+      {% set options = [{'label': 'Selecteer een optie', 'value': ''}] | merge(options) %}
+
+      {{ forms.selectField({
+        label: dropdown.title,
+        name: name ~ '[' ~ dropdown.slug ~ ']',
+        options: options,
+        value: value[dropdown.slug] ?? '',
+        required: true,
+      }) }}
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% js %}
+{% endjs %}

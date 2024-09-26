@@ -1,0 +1,50 @@
+{
+  "name": "the-web-bakery/product-attribute-fields",
+  "type": "craft-plugin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "support": {
+    "email": "support@thewebbakery.nl"
+  },
+  "authors": [
+    {
+      "name": "Casper van Schooten",
+      "homepage": "https://thewebbakery.nl/"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.4.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "thewebbakery\\productattributefields\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "product-attributes-fields",
+    "name": "Product Attribute Fields",
+    "developer": "The Web Bakery",
+    "documentationUrl": "https://bitbucket.org/thewebbakery/craft-product-attributes/src/main/",
+    "class": "thewebbakery\\productattributefields\\ProductAttributesField"
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{% set sections = craft.sections.all() %}
+{{ dump() }}
+<div>
+  <label for="entryTypesDropdown">Select Entry Type:</label>
+  <select id="entryTypesDropdown" name="entryType">
+    <option value="">-- Choose an Entry Type --</option>
+
+    {# Loop through all sections and their entry types #}
+    {% for section in sections %}
+      {{ ray(section.name) }}
+      {% set entryTypes = craft.sections.getEntryTypesBySectionId(section.id) %}
+
+      {# Loop through each entry type and add it as an option #}
+      {% for entryType in entryTypes %}
+        <option value="{{ entryType.id }}">{{ section.name }} - {{ entryType.name }}</option>
+      {% endfor %}
+    {% endfor %}
+  </select>
+
+
+
+  <div id="entryDropdownContainer">
+    <label for="entryDropdown">Select Entries:</label>
+    <select class="entryDropdown" id="entryDropdown" name="entries[]" multiple>
+    </select>
+  </div>
+</div>
+
+{% js %}
+
+
+      // The variable should be declared inside this block
+      const entryTypeDropdown = document.getElementById("entryTypeDropdown");
+
+      if (entryTypeDropdown) {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        // Fetch entry types on page load
+        fetch('/actions/product-attributes/entry/get-entry-types', {
+          method: 'GET',
+          headers: {
+            'X-CSRF-Token': csrfToken
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            data.entryTypeOptions.forEach(function(option) {
+              const optionElement = document.createElement("option");
+              optionElement.value = option.value;
+              optionElement.text = option.label;
+              entryTypeDropdown.appendChild(optionElement);
+            });
+          })
+          .catch(error => console.error('Error fetching entry types:', error));
+
+        // Fetch entries when an entry type is selected
+        entryTypeDropdown.addEventListener("change", function() {
+          const entryTypeId = this.value;
+          if (entryTypeId) {
+            fetch(`/actions/product-attributes/entry/get-entries?entryTypeId=${entryTypeId}`, {
+              method: 'GET',
+              headers: {
+                'X-CSRF-Token': csrfToken
+              }
+            })
+              .then(response => response.json())
+              .then(data => {
+                const entryDropdown = document.getElementById("entryDropdown");
+                entryDropdown.innerHTML = ''; // Clear previous entries
+
+                data.entries.forEach(function(entry) {
+                  const optionElement = document.createElement("option");
+                  optionElement.value = entry.id;
+                  optionElement.text = entry.title;
+                  entryDropdown.appendChild(optionElement);
+                });
+              })
+              .catch(error => console.error('Error fetching entries:', error));
+          }
+        });
+      }
+
+{% endjs %}

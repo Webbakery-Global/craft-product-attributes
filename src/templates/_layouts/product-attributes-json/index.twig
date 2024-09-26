@@ -1,0 +1,14 @@
+{% extends 'product-attribute-fields/_layouts' %}
+{% import '_includes/forms' as forms %}
+
+
+{% block main %}
+  <div>
+    {{ forms.textAreaField({
+      name: name,
+      class: '',
+      value: value ?: '',
+
+    }) }}
+  </div>
+{% endblock %}
